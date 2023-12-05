@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Website</title>
+</head>
+<body>
+    <header>
+        <img src="pai-txtlogo-black.png" class="logo" alt="">
+        <nav><ul>
+            <li><a href="">الصفحة الرئيسية</a></li>
+            <li><a href="">التطبيقات</a></li>
+            <li><a href="">تواصل معنا</a></li>
+            <li><a class="button" href="chat.html">   بدء محادثة   </a></li>
+        </ul></nav>
+    </header>
+    <div class="maincontainer">
+        <div class="container">
+            <h1 class="text first-text" style="font-size: 3.2rem;"></h1>
+            <span class="text sec-text" style="font-size: 2.7rem;margin-top: 5px;margin-right: 0px;">حل المشكلات</span>
+        </div>
+    </div>
+    <script>
+        const text = document.querySelector(".sec-text");
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "اقتراحات عامة";
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "برمجة الحاسب";
+            }, 4000);
+            setTimeout(() => {
+                text.textContent = "حل المعادلات";
+            }, 8000);
+            setTimeout(() => {
+                text.textContent = "صناعة المحتوى";
+            }, 12000); //1s = 1000
+        }
+        textLoad();
+        setInterval(textLoad, 12000);
+    </script>   
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>

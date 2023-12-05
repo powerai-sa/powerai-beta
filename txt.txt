@@ -1,0 +1,40 @@
+    <div id="chatbox"></div>
+
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            const chatbox = document.getElementById('chatbox');
+
+            // Display user message in the chatbox
+            chatbox.innerHTML += `<div class="user-message">${userInput}</div>`;
+
+            const API_ENDPOINT = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+            const API_KEY = 'YOUR_API_KEY';
+
+            axios.post(API_ENDPOINT, {
+                prompt: userInput,
+                max_tokens: 150,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${API_KEY}`,
+                },
+            })
+            .then(response => {
+                // Handle the response from the API
+                const chatbotReply = response.data.choices[0].text;
+                
+                // Display chatbot's reply in the chatbox
+                chatbox.innerHTML += `<div class="chatbot-message">${chatbotReply}</div>`;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
+            // Clear the user input field
+            document.getElementById('userInput').value = '';
+        }
+    </script>

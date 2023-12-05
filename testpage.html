@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		.container {
+			width: 300px;
+			margin: 50px auto;
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+		}
+
+		.display {
+			width: 100%;
+			height: 50px;
+			background-color: #e6e6e6;
+			border-radius: 5px;
+			font-size: 20px;
+			text-align: right;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			width: 50px;
+			height: 50px;
+			background-color: #e6e6e6;
+			border-radius: 5px;
+			font-size: 20px;
+			margin: 5px;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #d9d9d9;
+		}
+
+		.btn:active {
+			background-color: #bfbfbf;
+		}
+
+		.btn.clear {
+			background-color: #ffcccc;
+		}
+
+		.btn.clear:hover {
+			background-color: #ff9999;
+		}
+
+		.btn.clear:active {
+			background-color: #ff6666;
+		}
+
+		.btn.equal {
+			background-color: #b3d9ff;
+		}
+
+		.btn.equal:hover {
+			background-color: #99ccff;
+		}
+
+		.btn.equal:active {
+			background-color: #66b3ff;
+		}
+
+		.btn.operator {
+			background-color: #ffcc99;
+		}
+
+		.btn.operator:hover {
+			background-color: #ffbf80;
+		}
+
+		.btn.operator:active {
+			background-color: #ff9933;
+		}
+
+		.btn.number {
+			background-color: #cccccc;
+		}
+
+		.btn.number:hover {
+			background-color: #b3b3b3;
+		}
+
+		.btn.number:active {
+			background-color: #999999;
+		}
+
+		.btn.dot {
+			background-color: #e6e6e6;
+		}
+
+		.btn.dot:hover {
+			background-color: #d9d9d9;
+		}
+
+		.btn.dot:active {
+			background-color: #bfbfbf;
+		}
+
+		.btn.zero {
+			width: 110px;
+		}
+
+		.btn.zero:hover {
+			background-color: #b3b3b3;
+		}
+
+		.btn.zero:active {
+			background-color: #999999;
+		}
+
+		.btn.operator {
+			font-weight: bold;
+		}
+
+		.btn.equal {
+			font-weight: bold;
+		}
+
+		.btn.dot {
+			font-weight: bold;
+		}
+
+		.btn.zero {
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="display" id="display">0</div>
+		<div class="row">
+			<button class="btn clear" onclick="clearDisplay()">C</button>
+			<button class="btn operator" onclick="addOperator('/')">/</button>
+			<button class="btn operator" onclick="addOperator('*')">*</button>
+			<button class="btn operator" onclick="addOperator('-')">-</button>
+		</div>
+		<div class="row">
+			<button class="btn number" onclick="addNumber(7)">7</button>
+			<button class="btn number" onclick="addNumber(8)">8</button>
+			<button class="btn number" onclick="addNumber(9)">9</button>
+			<button class="btn operator" onclick="addOperator('+')">+</button>
+		</div>
+		<div class="row">
+			<button class="btn number" onclick="addNumber(4)">4</button>
+			<button class="btn number" onclick="addNumber(5)">5</button>
+			<button class="btn number" onclick="addNumber(6)">6</button>
+			<button class="btn equal" onclick="calculate()">=</button>
+		</div>
+		<div class="row">
+			<button class="btn number" onclick="addNumber(1)">1</button>
+			<button class="btn number" onclick="addNumber(2)">2</button>
+			<button class="btn number" onclick="addNumber(3)">3</button>
+			<button class="btn dot" onclick="addDot()">.</button>
+		</div>
+		<div class="row">
+			<button class="btn zero" onclick="addNumber(0)">0</button>
+			<button class="btn operator" onclick="addOperator('**')">^</button>
+			<button class="btn operator" onclick="addOperator('%')">%</button>
+			<button class="btn operator" onclick="addOperator('**2')">x<sup>2</sup></button>
+		</div>
+	</div>
+
+	<script>
+		let display = document.getElementById("display");
+		let equation = "";
+
+		function addNumber(num) {
+			if (display.innerHTML === "0") {
+				display.innerHTML = num;
+			} else {
+				display.innerHTML += num;
+			}
+			equation += num;
+		}
+
+		function addOperator(op) {
+			if (equation !== "") {
+				display.innerHTML = op;
+				equation += op;
+			}
+		}
+
+		function addDot() {
+			if (!display.innerHTML.includes(".")) {
+				display.innerHTML += ".";
+				equation += ".";
+			}
+		}
+
+		function clearDisplay() {
+			display.innerHTML = "0";
+			equation = "";
+		}
+
+		function calculate() {
+			let result = eval(equation);
+			display.innerHTML = result;
+			equation = result;
+		}
+	</script>
+</body>
+</html>
